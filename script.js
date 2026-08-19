@@ -48,3 +48,19 @@ function crearCorazonExplosivo() {
 
 // Inicializar
 crearCorazones();
+
+// Botón NO que se escapa
+const btnNo = document.getElementById('btnNo');
+
+btnNo.addEventListener('mouseover', () => {
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    btnNo.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+btnNo.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    btnNo.style.transform = `translate(${x}px, ${y}px)`;
+});

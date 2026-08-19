@@ -99,6 +99,15 @@ h1 {
     font-size: 1.3rem !important;
 }
 
+.buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    position: relative;
+}
+
 .btn {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -109,7 +118,12 @@ h1 {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(118, 75, 162, 0.4);
-    margin-top: 2rem;
+}
+
+.btn-no {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    position: relative;
+    transition: all 0.2s ease;
 }
 
 .btn:hover {
