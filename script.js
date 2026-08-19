@@ -49,18 +49,31 @@ function crearCorazonExplosivo() {
 // Inicializar
 crearCorazones();
 
-// Botón NO que se escapa
+// Botón NO que se escapa por toda la pantalla
 const btnNo = document.getElementById('btnNo');
+const container = document.querySelector('.container');
 
-btnNo.addEventListener('mouseover', () => {
-    const x = Math.random() * 200 - 100;
-    const y = Math.random() * 200 - 100;
-    btnNo.style.transform = `translate(${x}px, ${y}px)`;
-});
-
-btnNo.addEventListener('touchstart', (e) => {
+function escaparBoton(e) {
     e.preventDefault();
-    const x = Math.random() * 200 - 100;
-    const y = Math.random() * 200 - 100;
-    btnNo.style.transform = `translate(${x}px, ${y}px)`;
-});
+    e.stopPropagation();
+    
+    // Calcular posición random dentro del viewport
+    const maxX = window.innerWidth - btnNo.offsetWidth - 40;
+    const maxY = window.innerHeight - btnNo.offsetHeight - 40;
+    
+    let newX = Math.random() * maxX;
+    let newY = Math.random() * maxY;
+    
+    // Sacarlo del flujo normal y posicionarlo fijo en pantalla
+    btnNo.style.position = 'fixed';
+    btnNo.style.left = newX + 'px';
+    btnNo.style.top = newY + 'px';
+    btnNo.style.transform = 'none';
+    btnNo.style.zIndex = '999';
+    btnNo.style.transition = 'all 0.15s ease';
+}
+
+btnNo.addEventListener('mouseover', escaparBoton);
+btnNo.addEventListener('mousedown', escaparBoton);
+btnNo.addEventListener('touchstart', escaparBoton);
+btnNo.addEventListener('focus', escaparBoton);
